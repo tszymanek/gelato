@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% set image_route = 'bundles/todaysgelato/images/' %}
+
+{% block stylesheets %}
+    {% stylesheets 'bundles/todaysgelato/css/*' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>image</th>
+                <th>name</th>
+                <th>description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for gelato in gelatos %}
+                <tr>
+                    <td>{{ gelato.id }}</td>
+                    <td>
+                        <img class="gelato-image" src="{{ asset(image_route ~ gelato.image) }}" alt="{{ gelato.name }}"/>
+                    </td>
+                    <td>{{ gelato.name }}</td>
+                    <td>{{ gelato.description }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

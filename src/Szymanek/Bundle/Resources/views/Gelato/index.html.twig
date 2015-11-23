@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Gelato list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for gelato in gelatos %}
+            <tr>
+                <td>
+                    <a href="{{ path('gelato_show', { 'id': gelato.id }) }}">
+                        {{ gelato.id }}
+                    </a>
+                </td>
+                <td>
+                    <img class="gelato-image" src="{{ asset(image_route ~ gelato.image) }}" alt="{{ gelato.name }}" />
+                </td>
+                <td>{{ gelato.name }}</td>
+                <td>{{ gelato.description }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('gelato_show', { 'id': gelato.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('gelato_edit', { 'id': gelato.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('gelato_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+{% endblock %}
