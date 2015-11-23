@@ -13,7 +13,7 @@ class GelatoType extends AbstractType
         $builder
             ->add('name')
             ->add('description', 'textarea')
-            ->add('image')
+            ->add('image', 'file', array('mapped' => false))
         ;
     }
 
