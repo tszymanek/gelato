@@ -3,16 +3,12 @@
 {% block body %}
     <h1>Gelato</h1>
 
+    {#{{ dump(gelato) }}#}
     <table class="record_properties">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ gelato.id }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
                 <td>
-                    <img class="gelato-image" src="{{ asset(image_route ~ gelato.image) }}" alt="{{ gelato.name }}" />
+                    <img class="gelato-image" src="{{ asset(gelato.image.webPath) }}" alt="{{ gelato.image.path }}" />
                 </td>
             </tr>
             <tr>

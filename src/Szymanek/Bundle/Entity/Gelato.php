@@ -5,9 +5,6 @@ namespace Szymanek\Bundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Gelato
- *
- * @ORM\Table()
  * @ORM\Entity
  */
 class Gelato
@@ -36,9 +33,8 @@ class Gelato
     private $description;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="image", type="string")
+     * @ORM\ManyToOne(targetEntity="Image", cascade={"all"}, fetch="EAGER")
+     * @ORM\JoinColumn(name="image", referencedColumnName="id")
      */
     private $image;
 
@@ -60,8 +56,7 @@ class Gelato
 
     /**
      * @param string $name
-     *
-     * @return Gelato
+     * @return $this
      */
     public function setName($name)
     {
@@ -80,6 +75,7 @@ class Gelato
 
     /**
      * @param string $description
+     * @return $this
      */
     public function setDescription($description)
     {
@@ -89,7 +85,7 @@ class Gelato
     }
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getImage()
     {
@@ -97,7 +93,8 @@ class Gelato
     }
 
     /**
-     * @param string $image
+     * @param mixed $image
+     * @return $this
      */
     public function setImage($image)
     {
@@ -106,6 +103,16 @@ class Gelato
         return $this;
     }
 
+    private $list;
 
+    public function getList()
+    {
+        return $this->list;
+    }
+
+    public function setList($list)
+    {
+        $this->list = $list;
+        return $this;
+    }
 }
-

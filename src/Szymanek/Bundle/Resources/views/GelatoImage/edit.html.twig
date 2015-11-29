@@ -1,19 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Gelato edit</h1>
+    <h1>Gelato Image edit</h1>
 
     {{ form_start(form) }}
-        {{ form_row(form.name) }}
-        {{ form_row(form.description) }}
-        <img class="gelato-image" src="{{ asset(gelato.webPath) }}" alt="{{ gelato.name }}" />
         {{ form_row(form.file) }}
         <input type="submit" value="Update" />
     {{ form_end(form) }}
 
     <ul class="record_actions">
         <li>
-            <a href="{{ path('gelato') }}">
+            <a href="{{ path('gelatoimage') }}">
                 Back to the list
             </a>
         </li>

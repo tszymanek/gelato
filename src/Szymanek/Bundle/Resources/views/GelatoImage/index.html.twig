@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <h1>Gelato Image list</h1>
+        </div>
+        <div class="row">
+        {% for gelatoImage in gelatoImages %}
+            <div class="col-lg-2 col-md-2">
+                <a href="{{ path('gelatoimage_show', { 'id': gelatoImage.id }) }}">
+                    <img class="img-responsive img-thumbnail" src="{{ asset(gelatoImage.webPath) }}" alt="{{ gelatoImage.path }}" />
+                </a>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="row">
+            <ul>
+                <li>
+                    <a href="{{ path('gelatoimage_new') }}">
+                        Create a new entry
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

@@ -22,7 +22,7 @@
                     </a>
                 </td>
                 <td>
-                    <img class="gelato-image" src="{{ asset(image_route ~ gelato.image) }}" alt="{{ gelato.name }}" />
+                    <img class="gelato-image" src="{{ asset(gelato.image.webPath) }}" alt="{{ gelato.image.path }}" />
                 </td>
                 <td>{{ gelato.name }}</td>
                 <td>{{ gelato.description }}</td>
