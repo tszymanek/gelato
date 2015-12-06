@@ -1,8 +1,36 @@
-.gelato-image {
-    width: 100px;
+body {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.col-padding {
+    padding: 15px;
+}
+
+.glyphicon-plus-circle:before {
+    border: 3px solid white;
+    border-radius: 100%;
+    padding: 5px 6px;
 }
 
 input[type='file'] {
     color: transparent;
     width: 95px;
+}
+
+.navbar-center {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin: auto;
+}
+
+.navbar-middle {
+    line-height: 50px;
+}
+
+.navbar-inverse-transparent {
+    background-color: rgba(34, 34, 34, 0.7);
+    border: 0;
 }

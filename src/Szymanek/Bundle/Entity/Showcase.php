@@ -3,10 +3,12 @@
 namespace Szymanek\Bundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * @ORM\Entity
  */
-class Gelato
+class Showcase
 {
     /**
      * @var integer
@@ -25,18 +27,21 @@ class Gelato
     private $name;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="description", type="string")
+     * @ORM\Column(name="capacity", type="integer")
      */
-    private $description;
+    private $capacity;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Image", cascade={"all"}, fetch="EAGER")
-     * @ORM\JoinColumn(name="image", referencedColumnName="id")
+     * @ORM\OneToMany(targetEntity="ShowcaseGelato", mappedBy="showcase")
      */
-    private $image;
+    private $gelatos;
 
+    public function __construct() {
+        $this->gelatos = new ArrayCollection();
+    }
+    
     /**
      * @return integer
      */
@@ -60,45 +65,31 @@ class Gelato
     public function setName($name)
     {
         $this->name = $name;
-
         return $this;
     }
 
     /**
-     * @return string
+     * @return ArrayCollection
      */
-    public function getDescription()
+    public function getGelatos()
     {
-        return $this->description;
+        return $this->gelatos;
     }
 
     /**
-     * @param string $description
+     * @param $gelatos
      * @return $this
      */
-    public function setDescription($description)
+    public function setGelatos($gelatos)
     {
-        $this->description = $description;
-
+        $this->gelatos = $gelatos;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return integer
      */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * @param mixed $image
-     * @return $this
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
+    public function getCapacity(){
+        return $this->capacity;
     }
 }

@@ -6,7 +6,7 @@
     {{ form_start(form) }}
         {{ form_row(form.name) }}
         {{ form_row(form.description) }}
-        <img class="gelato-image" src="{{ asset(gelato.webPath) }}" alt="{{ gelato.name }}" />
+        <img class="gelato-image" src="{{ asset(gelato.image.webPath) }}" alt="{{ gelato.name }}" />
         {{ form_row(form.file) }}
         <input type="submit" value="Update" />
     {{ form_end(form) }}

@@ -1,27 +1,29 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container">
-        <div class="row">
-            <h1>Gelato Image list</h1>
+<div class="container">
+    {#<div class="row">#}
+        {#<h1>Gelato Image list</h1>#}
+    {#</div>#}
+    {% for gelatoImage in gelatoImages %}
+        {% if loop.index0 is divisible by(4)%}
+            <div class="row">
+        {% endif %}
+        <div class="col-padding col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <a href="{{ path('gelatoimage_show', { 'id': gelatoImage.id }) }}">
+                <img class="img-responsive" src="{{ asset(gelatoImage.webPath) }}" alt="{{ gelatoImage.path }}" />
+            </a>
         </div>
-        <div class="row">
-        {% for gelatoImage in gelatoImages %}
-            <div class="col-lg-2 col-md-2">
-                <a href="{{ path('gelatoimage_show', { 'id': gelatoImage.id }) }}">
-                    <img class="img-responsive img-thumbnail" src="{{ asset(gelatoImage.webPath) }}" alt="{{ gelatoImage.path }}" />
-                </a>
-            </div>
-        {% endfor %}
-        </div>
-        <div class="row">
-            <ul>
-                <li>
-                    <a href="{{ path('gelatoimage_new') }}">
-                        Create a new entry
-                    </a>
-                </li>
-            </ul>
-        </div>
+        {% if loop.index is divisible by(4) or loop.last %}
     </div>
+        {% endif %}
+    {% endfor %}
+    <nav class="navbar navbar-inverse navbar-inverse-transparent navbar-fixed-bottom" role="navigation">
+        <div class="container">
+            <a class="navbar-link navbar-center navbar-middle" href="{{ path('gelatoimage_new') }}">
+                <span class="glyphicon glyphicon-plus glyphicon-plus-circle" aria-hidden="true"></span>
+            </a>
+        </div>
+    </nav>
+</div>
 {% endblock %}
