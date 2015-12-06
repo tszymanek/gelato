@@ -17,13 +17,13 @@ class GelatoType extends AbstractType
                 'label' => false,
                 'required' => false
             ))
-            ->add('list', 'entity', array(
-                'class' => 'TodaysGelatoBundle:Image',
-                'choice_label' => 'path',
-                'empty_data' => null,
-                'required' => false,
-                'placeholder' => ''
-            ))
+//            ->add('list', 'entity', array(
+//                'class' => 'TodaysGelatoBundle:Image',
+//                'choice_label' => 'path',
+//                'empty_data' => null,
+//                'required' => false,
+//                'placeholder' => ''
+//            ))
         ;
     }
 

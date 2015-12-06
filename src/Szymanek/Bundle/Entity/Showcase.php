@@ -5,9 +5,7 @@ namespace Szymanek\Bundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
-/**
- * @ORM\Entity
- */
+/** @ORM\Entity **/
 class Showcase
 {
     /**
@@ -33,15 +31,26 @@ class Showcase
      */
     private $capacity;
 
-    /**
-     * @ORM\OneToMany(targetEntity="ShowcaseGelato", mappedBy="showcase")
-     */
+    /** @ORM\OneToMany(targetEntity="ShowcaseGelato", mappedBy="showcase", fetch="EAGER")
+     * @ORM\OrderBy({"position" = "ASC"}) **/
     private $gelatos;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->gelatos = new ArrayCollection();
     }
-    
+
+//    public function sortGelatosByPosition()
+//    {
+//        $unsortedGelatos = $this->gelatos;
+//        $sortedGelatos = new ArrayCollection();
+//        foreach($unsortedGelatos as $key => $value){
+//            $sortedGelatos->set((integer)$unsortedGelatos->get($key)->getPosition(), $unsortedGelatos->get($key));
+//        }
+//        $this->gelatos = $sortedGelatos;
+//        return $this;
+//    }
+
     /**
      * @return integer
      */

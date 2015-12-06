@@ -3,9 +3,13 @@
 {% block body %}
     <div class="container">
         <div class="row">
-        {% for gelato in showcase.gelatos %}
-            {{ gelato.name }}
-        {% endfor %}
+            {#{{ dump(showcase.gelatos.get(5)) }}#}
+        {#{% for gelato in gelatos %}#}
+            {#{{ gelato.position }}#}
+        {#{% endfor %}#}
+            {{ dump(showcase) }}
+            {{ dump(gelatos) }}
+            {#{{ dump(gelatos) }}#}
         </div>
     </div>
 {% endblock %}

@@ -2,11 +2,13 @@
 
 namespace Szymanek\Bundle\Controller;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Szymanek\Bundle\Entity\Showcase;
+use Szymanek\Bundle\Entity\ShowcaseGelato;
 use Szymanek\Bundle\Entity\Gelato;
 use Szymanek\Bundle\Form\ShowcaseType;
 
@@ -24,9 +26,23 @@ class ShowcaseController extends Controller
         $em = $this->getDoctrine()->getManager();
         $showcase = $em->getRepository('TodaysGelatoBundle:Showcase')->find(1);
 
+        $query = $em->createQuery(
+            'SELECT s, sg FROM TodaysGelatoBundle:Showcase s JOIN s.gelatos sg WHERE s.id = 1 ORDER BY sg.position ASC'
+        );
+
+        $collection = $query->getResult();
+
+//        $gelatos = $showcase->getGelatos();
+//        $iterator = $gelatos->getIterator();
+//        $iterator->uasort(function ($a, $b) {
+//            return ($a->getPosition() < $b->getPosition()) ? -1 : 1;
+//        });
+//        $gelatos = new ArrayCollection(iterator_to_array($iterator));
+
         return $this->render(
             'TodaysGelatoBundle:Showcase:index.html.twig', array(
-                'showcase' => $showcase
+                'showcase' => $showcase,
+                'gelatos'  => $collection,
             )
         );
     }
